@@ -2,12 +2,34 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div style={{
-        display:"flex",
-        flexDirection:"column",
-        justifyContent:"center",
-        alignItems:"center",
-    }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        width: "100vw",
+      }}
+    >
+      <div
+        className="logo"
+        style={{
+          width: "7vw",
+          height: "auto",
+          padding: "none",
+          marginRight: "5vw"
+        }}
+      >
+        <img
+          src="./logo.png"
+          alt=""
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+        />
+      </div>
       <header
         style={{
           textAlign: "center",
@@ -44,7 +66,7 @@ const Home = () => {
         }}
       >
         <li>
-          <Link to="/mandelbrot">Mandelbrot</Link>
+          <Link to="/mandelbrotset">Mandelbrot Set</Link>
         </li>
         <li>
           <Link to="/ccurvefractal">CCurve</Link>
@@ -53,7 +75,7 @@ const Home = () => {
           <Link to="/dragoncurvefractal">Dragon Curve</Link>
         </li>
         <li>
-          <Link to="/pythogorastree">Pythagoras Tree</Link>
+          <Link to="/juliaset">Julia Set</Link>
         </li>
         <li>
           <Link to="/sierpinskitriangle">Sierpinski Triangle</Link>
