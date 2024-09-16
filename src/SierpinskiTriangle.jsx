@@ -2,8 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 
 const SierpinskiTriangle = () => {
   const canvasRef = useRef(null);
-  const [depth, setDepth] = useState(5); // Controls depth of the Sierpinski Triangle
-  const [size, setSize] = useState(400); // Controls the size of the initial triangle
+  const [depth, setDepth] = useState(5); 
+  const [size, setSize] = useState(400); 
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -19,13 +19,10 @@ const SierpinskiTriangle = () => {
       ctx.fill();
     };
 
-    // Recursive function to draw Sierpinski Triangle
     const drawSierpinski = (ctx, x0, y0, x1, y1, x2, y2, depth) => {
       if (depth === 0) {
-        // Draw a filled triangle
         drawTriangle(ctx, x0, y0, x1, y1, x2, y2);
       } else {
-        // Calculate midpoints
         const midX01 = (x0 + x1) / 2;
         const midY01 = (y0 + y1) / 2;
         const midX12 = (x1 + x2) / 2;
@@ -33,25 +30,20 @@ const SierpinskiTriangle = () => {
         const midX20 = (x2 + x0) / 2;
         const midY20 = (y2 + y0) / 2;
 
-        // Recursively draw 3 smaller triangles
         drawSierpinski(ctx, x0, y0, midX01, midY01, midX20, midY20, depth - 1);
         drawSierpinski(ctx, midX01, midY01, x1, y1, midX12, midY12, depth - 1);
         drawSierpinski(ctx, midX20, midY20, midX12, midY12, x2, y2, depth - 1);
       }
     };
 
-    // Clear the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Set up the fill style
-    ctx.fillStyle = "#0077FF"; // Blue color
+    ctx.fillStyle = "#0077FF";
 
-    // Calculate the coordinates for the initial triangle
     const height = (size * Math.sqrt(3)) / 2;
     const startX = (canvas.width - size) / 2;
     const startY = (canvas.height + height) / 2;
 
-    // Draw the Sierpinski Triangle
     drawSierpinski(
       ctx,
       startX,
@@ -62,7 +54,7 @@ const SierpinskiTriangle = () => {
       startY - height,
       depth
     );
-  }, [depth, size]); // Redraw when depth or size changes
+  }, [depth, size]); 
 
   return (
     <div style={{ textAlign: "center" }}>

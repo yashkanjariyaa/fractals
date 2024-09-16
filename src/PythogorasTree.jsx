@@ -2,8 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 
 const PythagorasTree = () => {
   const canvasRef = useRef(null);
-  const [depth, setDepth] = useState(5); // Controls tree depth
-  const [size, setSize] = useState(100); // Controls initial square size
+  const [depth, setDepth] = useState(5); 
+  const [size, setSize] = useState(100); 
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,10 +13,10 @@ const PythagorasTree = () => {
       ctx.save();
       ctx.translate(x, y);
       ctx.rotate(angle);
-      ctx.fillStyle = "#228B22"; // Tree green color
+      ctx.fillStyle = "#228B22"; 
       ctx.fillRect(0, 0, size, size);
-      ctx.strokeStyle = "#FFFFFF"; // White border color
-      ctx.lineWidth = 2; // Border thickness
+      ctx.strokeStyle = "#FFFFFF"; 
+      ctx.lineWidth = 2;
       ctx.strokeRect(0, 0, size, size);
       ctx.restore();
     };
@@ -24,13 +24,11 @@ const PythagorasTree = () => {
     const drawTree = (ctx, x, y, size, angle, depth) => {
       if (depth === 0) return;
 
-      // Draw the current square (the base of the tree)
       drawSquare(ctx, x, y, size, angle);
 
       const newSize = size / Math.sqrt(2);
       const offset = size / 2;
 
-      // Calculate the new positions and angles for the branches
       const xOffset = offset * Math.cos(angle);
       const yOffset = offset * Math.sin(angle);
 
@@ -53,21 +51,18 @@ const PythagorasTree = () => {
       );
     };
 
-    // Clear the canvas and set up the base square
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Center alignment
     const startX = canvas.width / 2 - size / 2;
     const startY = canvas.height - size;
 
-    // Draw the Pythagoras tree
+    // Draw
     drawTree(ctx, startX, startY, size, 0, depth);
   }, [depth, size]); // Re-render the tree when depth or size changes
 
   return (
     <div style={{ textAlign: "center" }}>
       {" "}
-      {/* Center align the plot */}
       <canvas
         ref={canvasRef}
         width={800}

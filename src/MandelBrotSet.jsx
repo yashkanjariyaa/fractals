@@ -10,7 +10,7 @@ const Mandelbrot = () => {
   const [xmax, setXmax] = useState(1.0);
   const [ymin, setYmin] = useState(-1.5);
   const [ymax, setYmax] = useState(1.5);
-  const [rangeScale, setRangeScale] = useState(1); // New slider state
+  const [rangeScale, setRangeScale] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const maxIter = 256;
   const canvasRef = useRef(null);
@@ -20,7 +20,7 @@ const Mandelbrot = () => {
     const ratio = iterations / maxIter;
     const red = Math.floor(255 * ratio);
     const green = Math.floor(255 * (1 - ratio));
-    return `rgb(${red},${green},255)`; // Blue to red gradient
+    return `rgb(${red},${green},255)`;
   };
 
   const mandelbrot = (c, maxIter) => {
@@ -59,9 +59,9 @@ const Mandelbrot = () => {
     setImage(dataURL);
   };
 
-  // Update ranges based on slider
+  // Updating ranges based on slider
   const handleSliderChange = (value) => {
-    const scaleFactor = 1 / value; // Calculate scale factor based on slider value
+    const scaleFactor = 1 / value; 
     const xRange = (xmax - xmin) * scaleFactor;
     const yRange = (ymax - ymin) * scaleFactor;
 
@@ -69,7 +69,7 @@ const Mandelbrot = () => {
     setXmax(1.0 * scaleFactor);
     setYmin(-1.5 * scaleFactor);
     setYmax(1.5 * scaleFactor);
-    setRangeScale(value); // Update the slider value
+    setRangeScale(value); 
   };
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const Mandelbrot = () => {
 
   useEffect(() => {
     if (image) {
-      const img = new window.Image(); // Use the global Image object
+      const img = new window.Image(); 
       img.src = image;
       img.onload = () => {
         setImageObj(img);
@@ -87,20 +87,18 @@ const Mandelbrot = () => {
   }, [image]);
 
   const handleDragEnd = (e) => {
-    const dragDistanceX = e.target.x() - 300; // Drag distance in X direction
-    const dragDistanceY = e.target.y() - 300; // Drag distance in Y direction
+    const dragDistanceX = e.target.x() - 300; // Drag in X direction
+    const dragDistanceY = e.target.y() - 300; // Drag in Y direction
 
-    // Calculate how much to move in terms of the plot's coordinate range
     const xMove = (xmax - xmin) * (dragDistanceX / width);
     const yMove = (ymax - ymin) * (dragDistanceY / height);
 
-    // Update the plot's boundaries based on the drag movement
+    // Updating the plot's boundaries based on the drag movement
     setXmin(xmin - xMove);
     setXmax(xmax - xMove);
     setYmin(ymin - yMove);
     setYmax(ymax - yMove);
 
-    // Reset the pan position to avoid cumulative dragging
     e.target.position({ x: 300, y: 300 });
   };
 
@@ -145,10 +143,10 @@ const Mandelbrot = () => {
       <Stage
         width={600}
         height={600}
-        offsetX={300} // Center the stage
-        offsetY={300} // Center the stage
-        x={pan.x + 300} // Adjust for centering
-        y={pan.y + 300} // Adjust for centering
+        offsetX={300} 
+        offsetY={300} 
+        x={pan.x + 300}
+        y={pan.y + 300} 
         ref={canvasRef}
         onDragEnd={handleDragEnd}
         draggable
