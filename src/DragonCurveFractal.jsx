@@ -26,7 +26,7 @@ const DragonCurve = () => {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.strokeStyle = "#FF4500";
+    ctx.strokeStyle = "#000000";
     ctx.lineWidth = 2;
 
     // Initial points
@@ -36,16 +36,24 @@ const DragonCurve = () => {
     const endY = startY;
 
     drawDragonCurve(ctx, startX, startY, endX, endY, depth, 1);
-  }, [depth, size]); 
+  }, [depth, size]);
 
   return (
     <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          fontSize: "3rem",
+          textAlign: "center",
+        }}
+      >
+       Dragon Curve
+      </div>
       <canvas
         ref={canvasRef}
         width={800}
         height={600}
         style={{
-          border: "1px solid black",
+          background:"#FF4500",
           display: "block",
           margin: "0 auto",
         }}
@@ -56,7 +64,7 @@ const DragonCurve = () => {
           <input
             type="range"
             min="1"
-            max="15"
+            max="20"
             value={depth}
             onChange={(e) => setDepth(Number(e.target.value))}
           />

@@ -2,8 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 
 const PythagorasTree = () => {
   const canvasRef = useRef(null);
-  const [depth, setDepth] = useState(5); 
-  const [size, setSize] = useState(100); 
+  const [depth, setDepth] = useState(5);
+  const [size, setSize] = useState(100);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,9 +13,9 @@ const PythagorasTree = () => {
       ctx.save();
       ctx.translate(x, y);
       ctx.rotate(angle);
-      ctx.fillStyle = "#228B22"; 
+      ctx.fillStyle = "black";
       ctx.fillRect(0, 0, size, size);
-      ctx.strokeStyle = "#FFFFFF"; 
+      ctx.strokeStyle = "#FFFFFF";
       ctx.lineWidth = 2;
       ctx.strokeRect(0, 0, size, size);
       ctx.restore();
@@ -62,13 +62,21 @@ const PythagorasTree = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          fontSize: "3rem",
+          textAlign: "center",
+        }}
+      >
+        Pythogoras Tree
+      </div>
       {" "}
       <canvas
         ref={canvasRef}
         width={800}
         height={600}
         style={{
-          border: "1px solid black",
+          background: "#EE8B22",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

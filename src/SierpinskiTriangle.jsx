@@ -58,6 +58,14 @@ const SierpinskiTriangle = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          fontSize: "3rem",
+          textAlign: "center",
+        }}
+      >
+        Sierpinski Triangle
+      </div>
       <canvas
         ref={canvasRef}
         width={800}

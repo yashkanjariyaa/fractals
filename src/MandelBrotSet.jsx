@@ -20,7 +20,7 @@ const Mandelbrot = () => {
     const ratio = iterations / maxIter;
     const red = Math.floor(255 * ratio);
     const green = Math.floor(255 * (1 - ratio));
-    return `rgb(${red},${green},255)`;
+    return `rgb(${red},${green},155)`;
   };
 
   const mandelbrot = (c, maxIter) => {
@@ -61,7 +61,7 @@ const Mandelbrot = () => {
 
   // Updating ranges based on slider
   const handleSliderChange = (value) => {
-    const scaleFactor = 1 / value; 
+    const scaleFactor = 1 / value;
     const xRange = (xmax - xmin) * scaleFactor;
     const yRange = (ymax - ymin) * scaleFactor;
 
@@ -69,7 +69,7 @@ const Mandelbrot = () => {
     setXmax(1.0 * scaleFactor);
     setYmin(-1.5 * scaleFactor);
     setYmax(1.5 * scaleFactor);
-    setRangeScale(value); 
+    setRangeScale(value);
   };
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const Mandelbrot = () => {
 
   useEffect(() => {
     if (image) {
-      const img = new window.Image(); 
+      const img = new window.Image();
       img.src = image;
       img.onload = () => {
         setImageObj(img);
@@ -127,7 +127,20 @@ const Mandelbrot = () => {
   };
 
   return (
-    <>
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+    }}>
+      <div
+        style={{
+          fontSize: "3rem",
+          textAlign: "center",
+        }}
+      >
+        MandelBrot Set
+      </div>
       {/* Slider to control range */}
       <div style={{ marginBottom: "10px" }}>
         <label>Zoom Level:</label>
@@ -143,10 +156,10 @@ const Mandelbrot = () => {
       <Stage
         width={600}
         height={600}
-        offsetX={300} 
-        offsetY={300} 
+        offsetX={300}
+        offsetY={300}
         x={pan.x + 300}
-        y={pan.y + 300} 
+        y={pan.y + 300}
         ref={canvasRef}
         onDragEnd={handleDragEnd}
         draggable
@@ -171,7 +184,7 @@ const Mandelbrot = () => {
           {renderAxisLabels()}
         </Layer>
       </Stage>
-    </>
+    </div>
   );
 };
 

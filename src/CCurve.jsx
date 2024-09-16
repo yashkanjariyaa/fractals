@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 const CCurveFractal = () => {
   const canvasRef = useRef(null);
   const [depth, setDepth] = useState(5); 
-  const [size, setSize] = useState(200); 
+  const [size, setSize] = useState(300); 
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -24,7 +24,7 @@ const CCurveFractal = () => {
     };
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = "#0000FF";
+    ctx.strokeStyle = "#000000";
     ctx.lineWidth = 2;
 
     const startX = (canvas.width - size) / 2;
@@ -37,6 +37,14 @@ const CCurveFractal = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          fontSize: "3rem",
+          textAlign: "center",
+        }}
+      >
+       C Cruve
+      </div>
       <canvas
         ref={canvasRef}
         width={800}
@@ -45,6 +53,8 @@ const CCurveFractal = () => {
           border: "1px solid black",
           display: "block",
           margin: "0 auto",
+          background: "#1144ff",
+          padding: "1rem"
         }}
       ></canvas>
       <div style={{ marginTop: "20px" }}>
